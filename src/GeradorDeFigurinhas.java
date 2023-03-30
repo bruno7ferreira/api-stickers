@@ -9,11 +9,12 @@ import java.net.URL;
 public class GeradorDeFigurinhas {
 
     // métodos
-    public void cria() throws Exception {
+    public void cria(InputStream inputStream, String nomeArquivo) throws Exception {
 
         // fazer leitura da imagem
         //(imagem local) InputStream inputStream = new FileInputStream(new File("entrada/filme.jpg"));
-        /*usando uma url*/ InputStream inputStream = new URL("https://m.media-amazon.com/images/M/MV5BNDE3ODcxYzMtY2YzZC00NmNlLWJiNDMtZDViZWM2MzIxZDYwXkEyXkFqcGdeQXVyNjAwNDUxODI@.jpg").openStream();
+
+        //(usando uma url) InputStream inputStream = new URL("https://m.media-amazon.com/images/M/MV5BNDE3ODcxYzMtY2YzZC00NmNlLWJiNDMtZDViZWM2MzIxZDYwXkEyXkFqcGdeQXVyNjAwNDUxODI@.jpg").openStream();
         BufferedImage imagemOriginal = ImageIO.read(inputStream);
         //(imagem local)  BufferedImage imagemOriginal = ImageIO.read(new File("entrada/filme.jpg"));
 
@@ -35,12 +36,15 @@ public class GeradorDeFigurinhas {
         graphics.setColor(Color.YELLOW);
         graphics.drawString("TOPZERA",370,novaImagemAltura-80);
 
-        // escrever a nova imagem em um arquivo
-        ImageIO.write(novaImagem, "png", new File("saida/figurinha.png"));
+        // escrever a nova imagem em um arquivo quando usar url
+        //ImageIO.write(novaImagem, "png", new File("saida/figurinha.png"));
 
+        // escrever a nova imagem em um arquivo
+        ImageIO.write(novaImagem, "png", new File(nomeArquivo));
 
     }
 
+    /* main somente para teste
     public static void main(String[] args) throws Exception {
 
         GeradorDeFigurinhas geradorDeFigurinhas = new GeradorDeFigurinhas();
@@ -49,5 +53,7 @@ public class GeradorDeFigurinhas {
         System.out.println("Arquivo gerado com sucesso!");
 
     }
+
+     */
 
 }
