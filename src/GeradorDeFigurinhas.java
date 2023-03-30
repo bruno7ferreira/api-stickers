@@ -2,6 +2,8 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.InputStream;
+import java.net.URL;
 
 
 public class GeradorDeFigurinhas {
@@ -10,7 +12,10 @@ public class GeradorDeFigurinhas {
     public void cria() throws Exception {
 
         // fazer leitura da imagem
-        BufferedImage imagemOriginal = ImageIO.read(new File("entrada/filme.jpg"));
+        //(imagem local) InputStream inputStream = new FileInputStream(new File("entrada/filme.jpg"));
+        /*usando uma url*/ InputStream inputStream = new URL("https://m.media-amazon.com/images/M/MV5BNDE3ODcxYzMtY2YzZC00NmNlLWJiNDMtZDViZWM2MzIxZDYwXkEyXkFqcGdeQXVyNjAwNDUxODI@.jpg").openStream();
+        BufferedImage imagemOriginal = ImageIO.read(inputStream);
+        //(imagem local)  BufferedImage imagemOriginal = ImageIO.read(new File("entrada/filme.jpg"));
 
         // cria nova imagem em memoria com transparencia e tamanho novo
         int imagemLargura = imagemOriginal.getWidth();
